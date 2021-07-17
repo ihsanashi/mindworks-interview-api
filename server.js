@@ -1,17 +1,21 @@
+const { ApolloServer } = require('apollo-server-express');
 const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const schema = require('./schemas/root');
+const { typeDefs } = require('./Schema/TypeDefs');
+const { resolvers } = require('./Schema/Resolvers');
 
-const app = express();
+const PORT = process.env.PORT || 4000;
 
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  })
-);
+async function startApolloServer() {
+  const server = new ApolloServer({ typeDefs, resolvers });
 
-const PORT = process.env.PORT || 5000;
+  await server.start();
 
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+  const app = express();
+  server.applyMiddleware({ app });
+
+  await new Promise((resolve) => app.listen({ port: PORT }, resolve));
+  console.log(`Server listening on port ${PORT}`);
+  return { server, app };
+}
+
+startApolloServer();
