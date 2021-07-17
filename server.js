@@ -13,6 +13,7 @@ async function startApolloServer() {
     typeDefs,
     resolvers,
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+    introspection: true,
   });
 
   await server.start();
