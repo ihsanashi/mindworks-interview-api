@@ -2,22 +2,23 @@ const axios = require('axios');
 const {
   GraphQLObjectType,
   GraphQLList,
-  GraphQLID,
   GraphQLSchema,
+  GraphQLInt,
 } = require('graphql');
 const PostType = require('./post');
 const CommentType = require('./comment');
 
 // Root query
 const RootQuery = new GraphQLObjectType({
-  name: 'RootQueryType',
+  name: 'Root',
   fields: () => ({
     post: {
       type: PostType,
+      description: 'Single post',
       args: {
-        id: { type: GraphQLID },
+        id: { type: GraphQLInt },
       },
-      resolve(parent, args) {
+      resolve: (parent, args) => {
         return axios
           .get(`https://jsonplaceholder.typicode.com/posts/${args.id}`)
           .then((res) => res.data);
@@ -25,7 +26,8 @@ const RootQuery = new GraphQLObjectType({
     },
     posts: {
       type: new GraphQLList(PostType),
-      resolve(parent, args) {
+      description: 'List of all posts',
+      resolve: (parent, args) => {
         return axios
           .get('https://jsonplaceholder.typicode.com/posts')
           .then((res) => res.data);
@@ -33,9 +35,10 @@ const RootQuery = new GraphQLObjectType({
     },
     comments: {
       type: new GraphQLList(CommentType),
-      resolve(parent, args) {
+      description: 'List of all comments',
+      resolve: (parent, args) => {
         return axios
-          .get('https://jsonplaceholder.typicode.com/comments')
+          .get(`https://jsonplaceholder.typicode.com/comments`)
           .then((res) => res.data);
       },
     },
