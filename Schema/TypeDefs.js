@@ -31,21 +31,27 @@ const typeDefs = gql`
     DESC
   }
 
+  input PostSort {
+    field: PostSortField!
+    order: Order!
+  }
+
   input CommentSort {
     field: CommentSortField!
     order: Order!
   }
 
-  input PostSort {
-    field: PostSortField!
-    order: Order!
+  input CommentFilter {
+    name: String
+    email: String
+    body: String
   }
 
   # Queries
   type Query {
     post(id: Int!): Post!
     posts(sortBy: PostSort, limit: Int): [Post!]!
-    comments(sortBy: CommentSort, limit: Int): [Comment!]!
+    comments(sortBy: CommentSort, limit: Int, where: CommentFilter): [Comment!]!
   }
 `;
 
