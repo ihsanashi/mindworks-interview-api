@@ -1,7 +1,10 @@
-- [Introduction](#introduction)
-- [Technologies](#technologies)
-- [API Response Screenshots](#api-response-screenshots)
-- [View the API](#view-the-api)
+# Table of contents
+
+- [Table of contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Technologies](#technologies)
+  - [API Response Screenshots](#api-response-screenshots)
+  - [View the API](#view-the-api)
 
 ## Introduction
 
