@@ -33,7 +33,7 @@ All comments
 
 ## View the API
 
-You can make test queries right [over here](https://mindworks-interview-api.herokuapp.com/graphql).
+You can make test queries in the [GraphQL Playground](https://mindworks-interview-api.herokuapp.com/graphql).
 
 ## Getting Started
 
