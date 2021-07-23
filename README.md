@@ -31,6 +31,9 @@ Single post
 All comments
 ![All comments](public/media/comments.png)
 
+Filtered comments
+![Filtered comments](public/media/filtered-comments.png)
+
 ## View the API
 
 You can make test queries in the [GraphQL Playground](https://mindworks-interview-api.herokuapp.com/graphql).
